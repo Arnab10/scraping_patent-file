@@ -6,7 +6,7 @@ plist = ["7,811,611","8012515","7976828","7867948","8,202,545","8202906","832923
 print("Welcome to US patent office : \n")
 count = 1
 for id in plist:
-    print("Patent ",str(count),"\n\n")
+    print("\nPatent ",str(count),"\n\n")
     count = count+1
     driver = webdriver.Firefox(executable_path='/home/arnab/Downloads/geckodriver')
     time.sleep(2)   
