@@ -8,7 +8,7 @@ count = 1
 for id in plist:
     print("\nPatent ",str(count),"\n\n")
     count = count+1
-    driver = webdriver.Firefox(executable_path='/home/arnab/Downloads/geckodriver')
+    driver = webdriver.Firefox()
     time.sleep(2)   
     driver.get('http://patft.uspto.gov/netahtml/PTO/search-bool.html')
     time.sleep(5)
