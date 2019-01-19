@@ -6,9 +6,9 @@ plist = ["7,811,611","8012515","7976828","7867948","8,202,545","8202906","832923
 print("Welcome to US patent office : \n")
 count = 1
 for id in plist:
-    print("\nPatent ",str(count),"\n\n")
+    print("Patent ",str(count),"\n\n")
     count = count+1
-    driver = webdriver.Firefox()
+    driver = webdriver.Firefox(executable_path="/home/arnab/Downloads/geckodriver")
     time.sleep(2)   
     driver.get('http://patft.uspto.gov/netahtml/PTO/search-bool.html')
     time.sleep(5)
@@ -34,9 +34,12 @@ for id in plist:
     inventors = driver.find_element_by_xpath("//td[@width = '90%' and @align='left']")
     print("\nInventors : ",inventors.text)
     time.sleep(2)
-
-    fildate = driver.find_elements_by_xpath("//td[@width = '90%' and @align='left']")[3]
-    print("\nFile Date : ",fildate.text)
+    
+    c = 1
+    while driver.find_elements_by_xpath("//tr/th[@scope = 'row' and @width='10%' and @valign='top' and @align='left']")[c].text != "Filed:":
+        c+=1
+    fildate = driver.find_elements_by_xpath("//td[@width='90%' and @align='left']")[c]
+    print("\nFile Date : "+ fildate.text)
     time.sleep(2)
     driver.close()
     print("\n\n ***********************")
